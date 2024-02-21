@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../logo/logotipe.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../logo/logotipe.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.0.1/remixicon.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Футбольный клуб "Прорыв" - Фото и видео тренировок</title>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <a href=".././index.html">
+                <img src="../logo/logotipe.png">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="../News/index.html">Новости</a></li>
+            <li id="link1" class="link"><a href="../istoriesclub/index.html">История клуба</a></li>
+            <li id="link2" class="link"><a href="index.html">Фото и видео тренировок</a></li>
+            <li id="link3" class="link"><a href="#">Матчи</a></li>
+        </ul>
+        <button class="btn">Присоединиться</button>
+    </nav>
+
+    <section class="container">
+        <h2 class="header">Фото и видео тренировок</h2>
+        <h3>Тренировка 13.02.24</h3>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="./trenirovki/photo.jpg" alt="Фото тренировки 1">
+            </div>
+            <div class="gallery-item">
+                <img src="./trenirovki/photo2.jpg" alt="Фото тренировки 2">
+            </div>
+            <div class="gallery-item">
+                <img src="./trenirovki/photo3.jpg" alt="Фото тренировки 3">
+            </div>
+            <div class="gallery-item">
+                <img src="./trenirovki/photo4.jpg" alt="Фото тренировки 4">
+            </div>
+            <div class="gallery-item">
+                <img src="./trenirovki/photo5.jpg" alt="Фото тренировки 5">
+            </div>
+        </div>
+        <div class="gallery-controls">
+            <button class="gallery-prev-btn"><i class="ri-arrow-left-line"></i></button>
+            <button class="gallery-next-btn"><i class="ri-arrow-right-line"></i></button>
+        </div>
+    </section>
+
+    <!-- Модальное окно -->
+    <div class="modal">
+        <div class="modal-content">
+            <img src="" alt="" class="modal-image">
+            <button class="modal-close-btn"><i class="ri-close-line"></i></button>
+        </div>
+    </div>
+
+    <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="../logo/logotipe.png">
+            </div>
+            <p>
+                <font color="white">Хочешь стать частью команды? Думаешь не потянешь?
+                Присоединяйся, всему научим, даже больше! :) </font>
+                <br><br>
+                Адрес: Россия, 193231, Санкт-Петербург, улица Подвойского, 18, корп. 3
+                <br><br>
+                Прием звонков: с 9:00 до 18:00 (Пн-Вс)
+                <br>
+                Телефон/факс: +7 (812) 244-88-88
+                <br>
+                Почта: info@fcproryv346.ru
+            </p>
+            <div class="socials">
+                <a href="https://vk.com/club188538071"><i class="ri-vk-line"></i></a>
+                <a href="https://www.youtube.com/channel/UC_ybt2y3dlmiMytLT_PnpuA"><i class="ri-youtube-line"></i></a>
+                <a href="https://www.instagram.com/invites/contact/?i=1iaqzp6osy50q&amp;utm_content=ayx47ye"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>О клубе</h4>
+            <a href="#">История</a>
+            <a href="#">Трофеи</a>
+            <a href="#">Генеральный спонсор</a>
+            <a href="#">Блоги</a>
+            <a href="#">Каналы</a>
+        </div>
+        <div class="column">
+            <h4>Бизнес</h4>
+            <a href="#">Спонсоры и партнеры</a>
+            <a href="#">Лицензирование</a>
+            <a href="#">Клубная карта</a>
+        </div>
+        <div class="column">
+            <h4>Контакт</h4>
+            <a href="#">Написать в поддержку</a>
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Правила и условия</a>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        Авторское право ©️ 2024 ФК Прорыв. Все права защищены.
+    </div>
+
+    <script>
+        const gallery = document.querySelector('.gallery');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const galleryPrevBtn = document.querySelector('.gallery-prev-btn');
+        const galleryNextBtn = document.querySelector('.gallery-next-btn');
+        const modal = document.querySelector('.modal');
+        const modalImage = document.querySelector('.modal-image');
+        const modalCloseBtn = document.querySelector('.modal-close-btn');
+        let currentItem = 0;
+        galleryPrevBtn.addEventListener('click', () => {
+            currentItem--;
+            if (currentItem < 0) {
+                currentItem = galleryItems.length - 1;
+            }
+            gallery.style.transform = `translateX(-${currentItem * 100}%)`;
+        });
+        galleryNextBtn.addEventListener('click', () => {
+            currentItem++;
+            if (currentItem > galleryItems.length - 1) {
+                currentItem = 0;
+            }
+            gallery.style.transform = `translateX(-${currentItem * 100}%)`;
+        });
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImage.src = item.querySelector('img').src;
+            });
+        });
+        modalCloseBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+    </script>
+
+</body>
+</html>
